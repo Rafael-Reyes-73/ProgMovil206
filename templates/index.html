@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Survival Guide: Programación Móvil</title>
+</head>
+<body>
+
+    <h1 style="text-align: center;">Survival Guide: El Reto Móvil</h1>
+
+    <div class="lore-box">
+        Te despiertas en un campus desolado. A lo lejos, ves la entrada a la mazmorra de <b>Programación Móvil (Grupo 206)</b>. 
+        Para sobrevivir al semestre, debes atravesar 4 salas demostrando tu conocimiento de la Guía de Asignatura.
+    </div>
+
+    {% if error %} <div class="alert alert-error">{{ error }}</div> {% endif %}
+    {% if success %} <div class="alert alert-success">{{ success }}</div> {% endif %}
+
+    <div class="room">
+        <h2>Sala 1: La Cámara de las Reglas</h2>
+        <p>Debes conocer las normas básicas de permanencia en el aula para no ser expulsado de la mazmorra.</p>
+        
+        <form action="/submit/1" method="POST">
+            <label>1. ¿Cuál es el porcentaje de asistencia mínimo requerido para tener derecho a evaluación?</label>
+            <select name="q1_1" {% if level > 1 %}disabled{% endif %}>
+                <option value="">Selecciona...</option>
+                <option value="50">50%</option>
+                <option value="80" {% if level > 1 %}selected{% endif %}>80%</option>
+                <option value="100">100%</option>
+            </select><br><br>
+
+            <label>2. Según el reglamento, ¿Cuál es la restricción para el uso de laptops y dispositivos móviles?</label><br>
+            <input type="radio" name="q1_2" value="libre" {% if level > 1 %}disabled{% endif %}> Uso libre para evitar el estrés<br>
+            <input type="radio" name="q1_2" value="actividades" {% if level > 1 %}checked disabled{% endif %}> Limitados a uso exclusivo de las actividades que así lo requieran<br>
+
+            <div class="checkbox-container">
+                <input type="checkbox" name="check1" id="check1" {% if level > 1 %}checked disabled{% endif %}>
+                <label for="check1"><b>Check de Compromiso:</b> Juro solemnemente cumplir estas reglas.</label>
+            </div>
+            
+            {% if level == 1 %}<button type="submit">Intentar Desbloquear Sala 2</button>{% endif %}
+        </form>
+    </div>
+
+    <div class="room {% if level < 2 %}locked{% endif %}">
+        <h2>Sala 2: El Oráculo de las Notas</h2>
+        {% if level >= 2 %}
+            <p>Las rúbricas de evaluación mutan a lo largo del cuatrimestre. Demuestra que sabes a qué enfrentarte.</p>
+            <form action="/submit/2" method="POST">
+                <label>1. ¡Alerta Boss Fight! ¿Cuánto vale el "Proyecto Integrador" en el crítico 3er Parcial?</label>
+                <select name="q2_1" {% if level > 2 %}disabled{% endif %}>
+                    <option value="">Selecciona...</option>
+                    <option value="10">10%</option>
+                    <option value="30">30%</option>
+                    <option value="50" {% if level > 2 %}selected{% endif %}>50%</option>
+                </select><br><br>
+
+                <label>2. ¿Qué porcentaje de tu calificación define la "Evidencia de Conocimiento" en el 1er Parcial?</label><br>
+                <input type="radio" name="q2_2" value="20" {% if level > 2 %}disabled{% endif %}> 20%<br>
+                <input type="radio" name="q2_2" value="40" {% if level > 2 %}checked disabled{% endif %}> 40%<br>
+
+                <div class="checkbox-container">
+                    <input type="checkbox" name="check2" id="check2" {% if level > 2 %}checked disabled{% endif %}>
+                    <label for="check2"><b>Check de Compromiso:</b> Entiendo cómo seré evaluado.</label>
+                </div>
+                
+                {% if level == 2 %}<button type="submit">Intentar Desbloquear Sala 3</button>{% endif %}
+            </form>
+        {% else %}
+            <p>Supera la Cámara de las Reglas para ver este contenido.</p>
+        {% endif %}
+    </div>
+
+    <div class="room {% if level < 3 %}locked{% endif %}">
+        <h2>Sala 3: Skills a Desbloquear</h2>
+        {% if level >= 3 %}
+            <p>Identifica los objetivos técnicos y competencias multiplataforma requeridas.</p>
+            <form action="/submit/3" method="POST">
+                <label>1. ¿Cuál es el objetivo principal de la asignatura?</label><br>
+                <input type="radio" name="q3_1" value="web" {% if level > 3 %}disabled{% endif %}> Desarrollar páginas web estáticas<br>
+                <input type="radio" name="q3_1" value="apps_moviles" {% if level > 3 %}checked disabled{% endif %}> Desarrollar aplicaciones móviles mediante lenguajes de programación<br><br>
+
+                <label>2. Según las competencias que adquieres, ¿qué herramientas utilizarás para estas soluciones tecnológicas?</label>
+                <select name="q3_2" {% if level > 3 %}disabled{% endif %}>
+                    <option value="">Selecciona...</option>
+                    <option value="office">Paquetería Office y macros</option>
+                    <option value="poo_fw_bd" {% if level > 3 %}selected{% endif %}>Programación orientada a objetos, frameworks y bases de datos</option>
+                </select>
+
+                <div class="checkbox-container">
+                    <input type="checkbox" name="check3" id="check3" {% if level > 3 %}checked disabled{% endif %}>
+                    <label for="check3"><b>Check de Compromiso:</b> Me esforzaré por adquirir estos skills técnicos.</label>
+                </div>
+                
+                {% if level == 3 %}<button type="submit">Intentar Desbloquear Sala 4</button>{% endif %}
+            </form>
+        {% else %}
+            <p>Supera al Oráculo para ver tus Skills.</p>
+        {% endif %}
+    </div>
+
+    <div class="room {% if level < 4 %}locked{% endif %}">
+        <h2>Sala 4: La Línea del Tiempo</h2>
+        {% if level >= 4 %}
+            <p>El calendario no perdona. Demuestra que conoces las fechas clave establecidas por el alto mando.</p>
+            <form action="/submit/4" method="POST">
+                <label>1. ¿En qué fecha exacta se captura la calificación del 1er Parcial?</label>
+                <select name="q4_1" {% if level > 4 %}disabled{% endif %}>
+                    <option value="">Selecciona...</option>
+                    <option value="02_06" {% if level > 4 %}selected{% endif %}>02-06-26</option>
+                    <option value="07_07">07-07-26</option>
+                </select><br><br>
+
+                <label>2. ¿En qué fecha se librará la batalla de los Exámenes Finales?</label><br>
+                <input type="radio" name="q4_2" value="11_08" {% if level > 4 %}disabled{% endif %}> 11-08-26<br>
+                <input type="radio" name="q4_2" value="17_08" {% if level > 4 %}checked disabled{% endif %}> 17-08-26<br>
+
+                <div class="checkbox-container">
+                    <input type="checkbox" name="check4" id="check4" {% if level > 4 %}checked disabled{% endif %}>
+                    <label for="check4"><b>Check de Compromiso:</b> Agendaré estas fechas y seré responsable.</label>
+                </div>
+                
+                {% if level == 4 %}<button type="submit">Finalizar Reto</button>{% endif %}
+            </form>
+        {% else %}
+            <p>Desbloquea tus Skills para ver la Línea del Tiempo.</p>
+        {% endif %}
+    </div>
+
+    {% if level == 5 %}
+        <div class="room" style="text-align: center; border: 2px solid var(--primary);">
+            <h2>¡Misión Completada!</h2>
+            <p>Estás listo para dominar la programación móvil. ¡La interfaz de usuario y la lógica fundamental te esperan!</p>
+        </div>
+    {% endif %}
+
+    <form action="/reset" method="GET">
+        <button type="submit" class="reset-btn">Reiniciar Aventura</button>
+    </form>
+
+</body>
+</html>
