@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import {Saludo} from './components/Saludo';
 import { Saludo2 } from './components/Saludo2';
-
+import { Perfil } from './components/Perfil';
 
 //Zona2: Main Hogar de los componenetes
 export default function App() {
@@ -16,6 +16,8 @@ export default function App() {
       <Saludo></Saludo>
       <Text>-----Componente Compuesto-----</Text>
       <Saludo2></Saludo2>
+      <Text>----- Componente Perfil -----</Text>
+      <Perfil />
       <StatusBar style="auto" />
     </View>
   );
