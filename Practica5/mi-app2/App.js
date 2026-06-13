@@ -1,29 +1,33 @@
-// Zona1: Implementaciones de componenetes y archivos
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image } from 'react-native';
-import {Saludo} from './components/Saludo';
-import { Saludo2 } from './components/Saludo2';
+import { StyleSheet, Text, View } from 'react-native';
 import { Perfil } from './components/Perfil';
 
-//Zona2: Main Hogar de los componenetes
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>-----Componente Nativo-----</Text>
-      <Image source={require('./assets/image.png')} />
-      <Text>Rise of Champions</Text>
-      <Text>-----Componente Simple-----</Text>
-      <Saludo></Saludo>
-      <Text>-----Componente Compuesto-----</Text>
-      <Saludo2></Saludo2>
-      <Text>----- Componente Perfil -----</Text>
-      <Perfil />
+      <Text>----- Componente Rafael Reyes -----</Text>
+
+      <Perfil
+        nombre="Rafael de Jesus"
+        carrera="Sistemas"
+        materia="Programación Móvil"
+        cuatri="9no Cuatrimestre"
+      />
+
+      <Text>----- Componente Diosa Maru -----</Text>
+
+      <Perfil
+        nombre="Diosa Maru"
+        carrera="Negocios Internacionales"
+        materia="Comercio Exterior"
+        cuatri="9no Cuatrimestre"
+      />
+
       <StatusBar style="auto" />
     </View>
   );
 }
 
-//Zona3: Estilos y posicionamientos
 const styles = StyleSheet.create({
   container: {
     flex: 1,
