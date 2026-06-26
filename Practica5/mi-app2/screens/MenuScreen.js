@@ -1,64 +1,50 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import React, { useState } from 'react';
+
 import CardsScreen from './CardsScreen';
 import SafeAreaScreen from './SafeAreaScreen';
 import PressableScreen from './PressableScreen';
+import TextInputScreen from './TextInputScreen'; 
+import FlatListScreen from './FlatListScreen'; 
 
 export default function MenuScreen() {
     const [screen, setScreen] = useState('Menu');
-    switch (screen) {
 
+    switch (screen) {
         case 'Cards':
-            return <CardsScreen />
+            return <CardsScreen />;
 
         case 'SafeArea':
             return (
-            <SafeAreaScreen
-        regresar={() => setScreen('Menu')}
-        />
-    );
+                <SafeAreaScreen regresar={() => setScreen('Menu')} />
+            );
 
         case 'Pressable':
-            return <PressableScreen />
+            return <PressableScreen />;
 
         case 'TextInput':
-            return <PressableScreen />
-
+            return <TextInputScreen />;
+        
         case 'FlatList':
-            return <FlatListScreen />
-
-        case 'ImageBackgroung':
-            return <ImageBackgroungScreen />
-
-        case 'Pressable':
-            return <PressableScreen />
-
-        case 'TextInput':
-            return <PressableScreen />
+            return <FlatListScreen />;
 
         case 'Menu':
         default:
             return (
-
                 <View style={styles.container}>
                     <Text> Menú de Prácticas </Text>
 
                     <Button onPress={() => setScreen('Cards')} title='Cards' />
-
                     <Button onPress={() => setScreen('SafeArea')} title='SafeAreaView - ScrollView' />
-
                     <Button onPress={() => setScreen('Pressable')} title='Pressable & Switch' />   
-                    
                     <Button onPress={() => setScreen('TextInput')} title='TextInput & Alert' />   
+                    <Button onPress={() => setScreen('FlatList')} title='FlatList & Section List' />
                     
-                    <Button onPress={() => setScreen('SafeArea')} title='FlatList & Section List' />
-
-                    <Button onPress={() => setScreen('Pressable')} title='ImageBackgroung & SlapshScreen' />   
-                    
-                    <Button onPress={() => setScreen('TextInput')} title='ActivityIndicator, KeyboardAvoidingView' />   
-                    
-                    <Button onPress={() => setScreen('TextInput')} title='Modal & BottomSheet' />   
+                    {}
+                    <Button onPress={() => setScreen('ImageBackground')} title='ImageBackground & SplashScreen' />   
+                    <Button onPress={() => setScreen('Activity')} title='ActivityIndicator, KeyboardAvoidingView' />   
+                    <Button onPress={() => setScreen('Modal')} title='Modal & BottomSheet' />   
 
                     <StatusBar style="auto" />
                 </View>
@@ -76,4 +62,3 @@ const styles = StyleSheet.create({
         gap: 10,
     },
 });
-
