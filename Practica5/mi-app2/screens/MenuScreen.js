@@ -7,6 +7,7 @@ import SafeAreaScreen from './SafeAreaScreen';
 import PressableScreen from './PressableScreen';
 import TextInputScreen from './TextInputScreen'; 
 import FlatListScreen from './FlatListScreen'; 
+import FlatListScreens from './FlatListScreens';
 
 export default function MenuScreen() {
     const [screen, setScreen] = useState('Menu');
@@ -27,7 +28,7 @@ export default function MenuScreen() {
             return <TextInputScreen />;
         
         case 'FlatList':
-            return <FlatListScreen />;
+            return <FlatListScreens />;
 
         case 'Menu':
         default:

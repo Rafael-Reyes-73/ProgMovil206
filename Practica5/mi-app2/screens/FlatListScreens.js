@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View, Text, FlatList, SectionList, Button } from 'react-native';
 import { useState } from 'react';
 
-export default function FlatListScreen() {
+export default function FlatListScreens() {
     const [elementos, setElementos] = useState([
         { id: '1', nombre: 'Elemento 1' },
         { id: '2', nombre: 'Elemento 2' },
@@ -30,7 +30,6 @@ export default function FlatListScreen() {
 
     const eliminarElemento = (id) => {
         setElementos((prevElementos) =>
-            // Corrección: se cambió "itemo" por "item"
             prevElementos.filter(item => item.id !== id)
         );
     }
@@ -78,11 +77,9 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        // Modifiqué esto para que las listas no se amontonen en el centro
         paddingTop: 50, 
         paddingHorizontal: 20,
     },
-    // SE AGREGARON TODOS LOS ESTILOS FALTANTES:
     title: {
         fontSize: 24,
         fontWeight: 'bold',
